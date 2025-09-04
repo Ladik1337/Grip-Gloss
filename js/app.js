@@ -1,0 +1,1 @@
+function toggleLang(){alert('Здесь будет переключение языка RU/EN');}
