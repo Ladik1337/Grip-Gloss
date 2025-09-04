@@ -1,14 +1,17 @@
-function toggleLang(){ alert('Переключение RU/EN (демо)'); }
-function initSliders(){
-  document.querySelectorAll('.slider').forEach(slider=>{
-    let i=0, imgs=slider.querySelectorAll('img');
-    if(!imgs.length) return;
-    imgs[0].classList.add('active');
-    setInterval(()=>{
-      imgs[i].classList.remove('active');
-      i=(i+1)%imgs.length;
-      imgs[i].classList.add('active');
-    },3000);
+document.querySelectorAll('.slider').forEach(slider => {
+  let images = slider.querySelectorAll('img');
+  let current = 0;
+  if(images.length>0){ images[0].classList.add('active'); }
+
+  slider.querySelector('.next').addEventListener('click', () => {
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
   });
-}
-window.addEventListener('load', initSliders);
+
+  slider.querySelector('.prev').addEventListener('click', () => {
+    images[current].classList.remove('active');
+    current = (current - 1 + images.length) % images.length;
+    images[current].classList.add('active');
+  });
+});
